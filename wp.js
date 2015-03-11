@@ -178,7 +178,8 @@ WP.prototype.taxonomy = function( taxonomyName ) {
  */
 WP.prototype.categories = function() {
 	var options = extend( {}, this._options );
-	return new TaxonomiesRequest( options ).taxonomy( 'category' ).terms();
+  var categoriesTaxonomyPath = options.categoriesTaxonomyPath ||'category';
+	return new TaxonomiesRequest( options ).taxonomy( categoriesTaxonomyPath ).terms();
 };
 
 /**
@@ -197,7 +198,8 @@ WP.prototype.categories = function() {
  */
 WP.prototype.tags = function() {
 	var options = extend( {}, this._options );
-	return new TaxonomiesRequest( options ).taxonomy( 'post_tag' ).terms();
+ 	var tagsTaxonomyPath = options.tagsTaxonomyPath || 'post_tag';
+	return new TaxonomiesRequest( options ).taxonomy( tagsTaxonomyPath ).terms();
 };
 
 /**
